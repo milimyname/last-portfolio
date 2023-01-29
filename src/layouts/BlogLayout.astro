@@ -1,0 +1,24 @@
+---
+// 1. The frontmatter prop gives access to frontmatter and other data
+import Footer from '@components/layout/Footer.astro'
+import Sidebar from '@components/layout/Sidebar.astro'
+const { frontmatter } = Astro.props;
+
+---
+<html>
+  <head>
+    <!-- Add other Head elements here, like styles and meta tags. -->
+    <title>{frontmatter.title}</title>
+  </head>
+  <body class="container mx-auto py-12">
+    <!-- Add other UI components here, like common headers and footers. -->
+    <!-- 2. Rendered HTML will be passed into the default slot. -->
+    <main class="flex gap-10 justify-center relative">
+      <article class="lg:w-2/3">
+        <slot />
+      </article>
+      <Sidebar title={frontmatter.title} class="sticky top-0 h-screen"/>
+    </main>
+    <Footer/>
+  </body>
+</html>

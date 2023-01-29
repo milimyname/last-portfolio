@@ -1,0 +1,10 @@
+---
+const props = Astro.props;
+import CopyToClipboard from "@components/svelte/copyToClipboard.svelte";
+---
+
+
+<pre {...props} >
+  <CopyToClipboard client:idle />
+  <slot />
+</pre>
