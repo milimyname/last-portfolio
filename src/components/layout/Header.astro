@@ -1,0 +1,23 @@
+---
+const {title} = Astro.props;
+import { Icon } from 'astro-icon'
+// Find post by title
+const posts = await Astro.glob('../../pages/blog/diaries/*.mdx');
+const post = posts.filter(post=> post.frontmatter.title === title)[0];
+
+// Date and Reading Time
+const date = new Date(post.frontmatter.date);
+const readingTime = post.frontmatter.minutesRead;
+
+---
+
+<header class="hidden lg:block">
+    <!-- Go back to blog -->
+    <a href="/diaries" class="back">
+        <Icon name="ion:arrow-back-outline" size={24} />
+    </a>
+    <p class="meta flex flex-col">
+        <time datetime={date.toISOString()}>{date.toDateString()}</time>
+        <span class="reading-time">{readingTime}</span>
+    </p>
+</header>

@@ -1,0 +1,17 @@
+---
+const props = Astro.props;
+import { Image } from '@astrojs/image/components';
+
+// Get w from the props url 
+const width = +props.src.split('w=')[1].split('&')[0];
+const height = width/3;
+const url = props.src;
+
+---
+
+<img src={url} alt={props.alt} class='my-6 rounded-lg w-screen' />
+
+
+
+
+ 
