@@ -1,5 +1,4 @@
-import { remarkReadingTime } from './src/lib/readingTime.mjs';
-
+import { remarkReadingTime } from "./src/lib/readingTime.mjs";
 import { defineConfig } from "astro/config";
 
 // https://astro.build/config
@@ -11,6 +10,11 @@ import remarkToc from "remark-toc";
 
 // https://astro.build/config
 import svelte from "@astrojs/svelte";
+
+// https://astro.build/config
+
+// https://astro.build/config
+import image from "@astrojs/image";
 
 // https://astro.build/config
 export default defineConfig({
@@ -25,9 +29,10 @@ export default defineConfig({
       remarkRehype: {
         footnoteLabel: "Footnotes",
       },
-      gfm: false,
+      gfm: true,
       drafts: true,
     }),
     svelte(),
+    image(),
   ],
 });

@@ -10,6 +10,7 @@
       pre.classList.add('p-4');
       pre.classList.add('flex');
       pre.classList.add('rounded-lg');
+      pre.classList.add('my-4');
     });
   });
  

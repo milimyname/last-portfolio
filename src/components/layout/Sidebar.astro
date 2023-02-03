@@ -2,19 +2,19 @@
 const {title} = Astro.props;
 
 // Find post by title
-const posts = await Astro.glob('../../pages/diaries/*.mdx');
-import Li from '@components/svelte/goToHeading.svelte'
+const posts = await Astro.glob('../../pages/blog/diaries/*.mdx');
+import Li from '@src/components/svelte/goToHeading.svelte'
 
 const post = posts.filter(post=> post.frontmatter.title === title)[0];
 
 const headings = post.getHeadings();
 ---
 
-<nav class="w-max">
-    <ul>
+<nav class="hidden w-max h-full  md:block sticky top-10 ">
+    <ul class="w-32 text-gray-600">
         {
             headings.map(heading=>
-                <Li client:load id={heading.slug}/>
+                <Li client:load id={heading.slug} depth={heading.depth}/>
             )
         }
     </ul>
