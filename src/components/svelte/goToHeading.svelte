@@ -1,14 +1,13 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
-
   // Scroll to the heading by id
   export let id: string;
 
   // Depth of the heading
   export let depth: number;
 
-  $: liClass = depth > 1 ? `pl-${2 * depth}` : 'border-b border-black text-right mb-4 text-black';
+  $: liClass = depth > 1 ? `cursor-pointer !pl-${2 * depth}` : 'border-b text-right mb-4 cursor-pointer';
   
   const handleClick = (e: MouseEvent) => {
     e.preventDefault();
@@ -38,12 +37,12 @@
     // Remove active class from all li elements and change color to grey
     const allHeadings = document.querySelectorAll("li");
     allHeadings.forEach((heading) => {
-      heading.classList.remove("text-black", 'text-xl');
+      heading.classList.remove("text-black", 'text-xl', 'border-l-2', 'border-black', 'pl-2');
       heading.classList.add("text-gray-600");
     });
 
     // Add active class to li element
-    activeHeading?.classList.add("text-black", 'text-xl');
+    activeHeading?.classList.add("text-black", 'text-xl', 'border-l-2', 'border-black', 'pl-2',);
     activeHeading?.classList.remove("text-gray-600");
     
   };
