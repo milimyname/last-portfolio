@@ -1,0 +1,33 @@
+---
+import Layout from "../../layouts/BlogLayout.astro";
+
+// Find post by title
+const posts = await Astro.glob('../../pages/blog/diaries/*.mdx');
+
+// Date and Reading Time
+
+---
+
+<Layout title="Blog">
+    <main class="flex flex-col gap-10">
+        <section class="flex flex-col gap-4 justify-between md:flex-row md:gap-0">
+            <h2 class="text-3xl font-medium px-4 ml-2 border-l-2 border-black md:pl-2 h-fit md:ml-0">Diaries</h2>
+            <ul class="flex-1">
+                {posts.map((post) => 
+                    <li class="md:first:mt-16 md:rounded-xl hover:bg-neutral-100 focus:bg-neutral-100 md:p-5 p-4">
+                        <a href={post.url} class="flex flex-col gap-4 decoration-clone">
+                            <div class="flex items-center justify-between gap-6">
+                                <h3 class="text-xl font-semibold">{post.frontmatter.title}</h3>
+                                <div class="text-sm">
+                                    <time datetime={new Date(post.frontmatter.date).toISOString()}>{post.frontmatter.date}</time>
+                                    <span>{post.frontmatter.minutesRead}</span>
+                                </div>
+                            </div>
+                            <p>{post.frontmatter.description}</p>
+                        </a>
+                    </li>
+                )}
+            </ul>
+        </section>
+    </main>
+</Layout>

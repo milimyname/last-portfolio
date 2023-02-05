@@ -13,9 +13,14 @@ const headings = post.getHeadings();
 <nav class="hidden w-max h-full  md:block sticky top-10 ">
     <ul class="w-32 text-gray-600">
         {
-            headings.map(heading=>
-                <Li client:load id={heading.slug} depth={heading.depth}/>
-            )
+            headings.length > 1 ?
+                headings.map(heading=>
+                    <Li client:load id={heading.slug} depth={heading.depth}/>
+                )
+            :
+                <li class="text-gray-400">No headings</li>
+            
+            
         }
     </ul>
 </nav>

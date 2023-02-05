@@ -1,7 +1,9 @@
 ---
 // 1. The frontmatter prop gives access to frontmatter and other data
 import Footer from '@src/components/layout/Footer.astro'
-const { title } = Astro.props;
+import Header from '@src/components/layout/Header.astro'
+import Sidebar from '@src/components/layout/Sidebar.astro'
+const { frontmatter } = Astro.props;
 ---
 <html lang="en">
   <head>
@@ -10,23 +12,22 @@ const { title } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/mili.jpeg" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <title>{frontmatter.title}</title>
   </head>
-  <body class="max-w-3xl mx-auto py-6 md:px-4 flex flex-col gap-6 md:gap-20">
+  <body class="container mx-auto py-6 px-4 md:min-w-full md:px-6">
     <!-- Add other UI components here, like common headers and footers. -->
-    <header class="flex flex-col gap-5 px-4">
-        <h1 class="text-5xl font-bold">
-            All categories of my writing. 
-        </h1>
-        <p class="text-xl text-left">
-            I don't know why I do it. I just do it. <br> Here is a list of all the categories of my writing.
-        </p>
-    </header>
     <!-- 2. Rendered HTML will be passed into the default slot. -->
-     <slot/>
+    <main class="flex gap-5 lg:gap-10 justify-center relative">
+      <Header title={frontmatter.title}/>
+      <article class="lg:w-2/3">
+        <slot />
+      </article>
+      <Sidebar title={frontmatter.title} />
+    </main>
     <Footer/>
   </body>
 </html>
+
 
 <style>
   html{
