@@ -1,13 +1,10 @@
 <script>
 	import { Canvas, OrbitControls, T } from '@threlte/core'
-	import { HTML, Float, Text  } from '@threlte/extras'
-	import font from '@public/fonts/helvetiker_regular.typeface.json'
+	import { HTML, Float  } from '@threlte/extras'
 	
 
 	import { spring } from 'svelte/motion'
 	import { degToRad } from 'three/src/math/MathUtils'
-
-	const scale = spring(1);
 
 
 </script>
