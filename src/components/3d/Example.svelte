@@ -1,17 +1,6 @@
 <script>
-<<<<<<< HEAD
   import { Canvas, OrbitControls, T } from "@threlte/core";
   import { HTML, Float } from "@threlte/extras";
-=======
-	import { Canvas, OrbitControls, T } from '@threlte/core'
-	import { HTML, Float  } from '@threlte/extras'
-	
-
-	import { spring } from 'svelte/motion'
-	import { degToRad } from 'three/src/math/MathUtils'
-
-
->>>>>>> main
 </script>
 
 <div class="fixed h-screen w-screen">
