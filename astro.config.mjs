@@ -17,22 +17,22 @@ import svelte from "@astrojs/svelte";
 import image from "@astrojs/image";
 
 // https://astro.build/config
+import vercel from "@astrojs/vercel/serverless";
+
+// https://astro.build/config
 export default defineConfig({
-  integrations: [
-    tailwind(),
-    mdx({
-      syntaxHighlight: "shiki",
-      shikiConfig: {
-        theme: "github-dark",
-      },
-      remarkPlugins: [remarkToc, remarkReadingTime],
-      remarkRehype: {
-        footnoteLabel: "Footnotes",
-      },
-      gfm: true,
-      drafts: true,
-    }),
-    svelte(),
-    image(),
-  ],
+  integrations: [tailwind(), mdx({
+    syntaxHighlight: "shiki",
+    shikiConfig: {
+      theme: "github-dark"
+    },
+    remarkPlugins: [remarkToc, remarkReadingTime],
+    remarkRehype: {
+      footnoteLabel: "Footnotes"
+    },
+    gfm: true,
+    drafts: true
+  }), svelte(), image()],
+  output: "server",
+  adapter: vercel()
 });
