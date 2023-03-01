@@ -1,41 +1,28 @@
 <script>
-	import { Canvas, OrbitControls, T } from '@threlte/core'
-	import { HTML, Float, Text  } from '@threlte/extras'
-	import font from '@public/fonts/helvetiker_regular.typeface.json'
-	
-
-	import { spring } from 'svelte/motion'
-	import { degToRad } from 'three/src/math/MathUtils'
-
-	const scale = spring(1);
-
-
+  import { Canvas, OrbitControls, T } from "@threlte/core";
+  import { HTML, Float } from "@threlte/extras";
 </script>
 
 <div class="fixed h-screen w-screen">
-	<Canvas>
-		<T.PerspectiveCamera makeDefault position={[10, 0, 10]} fov={12}>
-			<OrbitControls maxPolarAngle={degToRad(80)}  enableDamping enableZoom={false} target={{ y: 0.5 }} />
-		</T.PerspectiveCamera>
+  <Canvas>
+    <T.PerspectiveCamera makeDefault position={[30, 0, 40]} fov={14}>
+      <OrbitControls enableDamping enableZoom={false} />
+    </T.PerspectiveCamera>
 
-		<!-- HTML Anchor -->
-	
-
-		<T.Mesh >
-			<Float speed={0}>
-				<HTML transform lookAt>
-					<a href="/blog" target="_blank" rel="noopener noreferrer">
-						Blog
-					</a>
-				</HTML>
-				
-			</Float>
-
-			<!-- <Text text={value} /> -->
-		</T.Mesh>
-
-
-		<!-- Floor -->
-	</Canvas>
+    <T.Mesh position={[0, 2, 0]}>
+      <Float value={0.01}>
+        <HTML transform>
+          <a href="/blog" class=" hover:text-orange-300"> Blog Page </a>
+          <a href="/blog/diaries/am-I-writer">
+            <div class="bg-white p-4 rounded-lg shadow-lg ">
+              <h1 class="text-2xl font-bold">Am I a writer?</h1>
+              <p class="text-gray-600">
+                This is how I'd like to start my first blog post.
+              </p>
+            </div>
+          </a>
+        </HTML>
+      </Float>
+    </T.Mesh>
+  </Canvas>
 </div>
-

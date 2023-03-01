@@ -4,7 +4,8 @@ import Layout from "../../layouts/BlogLayout.astro";
 // Find post by title
 const posts = await Astro.glob('../../pages/blog/diaries/*.mdx');
 
-// Date and Reading Time
+// Reverse the posts so that the most recent post is first
+posts.reverse();
 
 ---
 

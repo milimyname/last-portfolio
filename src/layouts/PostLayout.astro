@@ -14,12 +14,12 @@ const { frontmatter } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{frontmatter.title}</title>
   </head>
-  <body class="container mx-auto py-6 px-4 md:min-w-full md:px-6">
+  <body class="container mx-auto py-6 px-4 md:min-w-full md:px-6  ">
     <!-- Add other UI components here, like common headers and footers. -->
     <!-- 2. Rendered HTML will be passed into the default slot. -->
     <main class="flex gap-5 lg:gap-10 justify-center relative">
       <Header title={frontmatter.title}/>
-      <article class="lg:w-2/3">
+      <article class="lg:w-2/3 2xl:max-w-3xl">
         <slot />
       </article>
       <Sidebar title={frontmatter.title} />
